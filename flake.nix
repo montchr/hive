@@ -10,7 +10,7 @@
   };
 
   # override downstream with inputs.hive.inputs.nixpkgs.follows = ...
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   inputs = {
     colmena.url = "github:divnix/blank";
@@ -39,8 +39,8 @@
           // {
             loader = haumea.lib.loaders.scoped;
             transformer = with haumea.lib.transformers; [
-                liftDefault
-                (hoistLists "_imports" "imports")
+              liftDefault
+              (hoistLists "_imports" "imports")
             ];
             # `self` in paisano refers to `inputs.self.sourceInfo` 😕
             # but is disallowed in haumea
